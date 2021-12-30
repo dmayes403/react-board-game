@@ -12,13 +12,15 @@ import {
 } from "react-router-dom";
 import Dashboard from './components/dashboard';
 import GameSearch from './components/game-search';
+import GameDetails from './components/game-details';
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/game-search" element={<GameSearch />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="game-search" element={<GameSearch />} />
+        <Route path="game-details/:gameId" element={<GameDetails />} />
       </Route>
     </Routes>
   </BrowserRouter>,
