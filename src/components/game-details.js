@@ -15,6 +15,8 @@ export default function GameDetails() {
     }, [gameId])
 
     return (
-        <div>Game Details</div>
+        <div>
+          <img src={game?.images.medium}/>
+        </div>
     )
 }
