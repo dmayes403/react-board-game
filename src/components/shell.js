@@ -16,11 +16,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { Outlet, useNavigate } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import { ThemeProvider } from '@mui/styles';
-import theme from '../theme/MainTheme';
 
 const drawerWidth = 240;
 

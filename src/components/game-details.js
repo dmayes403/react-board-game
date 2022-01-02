@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { makeStyles } from '@mui/styles';
+import Rating from "./rating";
 
 export default function GameDetails() {
   const classes = useStyles();
@@ -22,6 +23,7 @@ export default function GameDetails() {
 
         <div className={classes.sideInfo}>
           <div className={classes.title}>{game?.name}</div>
+          <Rating userRating={game?.average_user_rating} ratingCount={game?.num_user_ratings} />
         </div>
       </div>
   )

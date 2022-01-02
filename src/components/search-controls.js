@@ -8,9 +8,7 @@ import { useEffect, useState, useCallback } from 'react';
 import debounce from 'lodash.debounce';
 
 export default function SearchControls({
-  onSearchChange,
   setSearchObj,
-  searchObj
 }) {
   const classes = useStyles();
   const [minPlayers, setMinPlayers] = useState(1);
