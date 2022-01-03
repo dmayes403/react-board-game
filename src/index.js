@@ -7,8 +7,6 @@ import {
   BrowserRouter, 
   Routes,
   Route,
-  Link,
-  useNavigate 
 } from "react-router-dom";
 import Dashboard from './components/dashboard';
 import GameSearch from './components/game-search';
