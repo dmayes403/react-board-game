@@ -43,11 +43,9 @@ export default function UserRating({ userRating, ratingCount }) {
   const fullStars = [];
   const halfStars = [];
   const emptyStars = [];
-  console.log('userRating', userRating);
 
   if (ratingCount && userRating > 1) {
     for (let i = 1; i <= userRating.toString().split('.')[0]; i++) {
-      console.log('i', i)
       fullStars.push(i);
     }
 

@@ -20,6 +20,12 @@ export default function GameSearch() {
     }
   }, [searchObj]);
 
+  // useEffect(() => {
+  //   axios.get(`https://api.boardgameatlas.com/api/game/categories?client_id=${process.env.REACT_APP_BOARD_GAME_VAL}`).then((response) => {
+  //     console.log(response.data);
+  //   });
+  // }, []);
+
   return (
     <div className="root">
       <SearchControls 
