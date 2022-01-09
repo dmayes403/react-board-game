@@ -4,7 +4,6 @@ import axios from "axios";
 import { makeStyles } from '@mui/styles';
 import UserRating from "./user-rating";
 import * as _ from 'lodash';
-import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 
 export default function GameDetails() {
