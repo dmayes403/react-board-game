@@ -6,6 +6,7 @@ import UserRating from "./user-rating";
 import * as _ from 'lodash';
 import Divider from '@mui/material/Divider';
 import GameDetailControls from "./game-detail-controls";
+import SimilarGames from "./similar-games";
 
 export default function GameDetails() {
   const classes = useStyles();
@@ -41,14 +42,14 @@ export default function GameDetails() {
   useEffect(() => {
     if (game) {
       axios.get(`https://api.boardgameatlas.com/api/search?mechanics=${game.mechanics[0].id}&client_id=${process.env.REACT_APP_BOARD_GAME_VAL}`).then((response) => {
-        console.log('mechanics2', response);
+        console.log('similar games', response);
         setSimilarGames(response.data.games);
       });
     }
   }, [game])
 
   return (
-    <>
+    <div style={{width: '100%'}}>
       <div className={classes.mainDetails}>
         <img src={game?.images.large}/>
 
@@ -110,7 +111,7 @@ export default function GameDetails() {
         <GameDetailControls />
       </div>
 
-      <Divider variant="middle" />
+      <Divider />
 
       <div className={classes.lowerDetails}>
         <div className={classes.columnData}>
@@ -118,7 +119,11 @@ export default function GameDetails() {
           <div>{game?.description_preview}</div>
         </div>
       </div>
-    </>
+
+      <Divider />
+
+      <SimilarGames games={similarGames}/>
+    </div>
   )
 }
 
@@ -132,7 +137,7 @@ const useStyles = makeStyles(theme => ({
       // height: '400px'
     },
     justifyContent: 'center',
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   sideInfo: {
     display: 'flex',
@@ -159,7 +164,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(1)
   },
   lowerDetails: {
-    padding: theme.spacing(2)
+    padding: `${theme.spacing(2)} 0px`
   },
   artistContainer: {
     display: 'flex',

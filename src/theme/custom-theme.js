@@ -2,9 +2,11 @@ import { createTheme } from '@mui/material';
 
 const primaryColor = '#116466';
 const secondaryColor = '#184746';
+const thirdColor = '#FF652F';
 const backgroundColor = '#2C3531';
 const iconColor = '#D9B08C';
 const iconColor2 = '#FFCB9A';
+const iconColor3 = '#FF652F';
 
 const defaultTheme = createTheme({
   palette: {
@@ -17,6 +19,9 @@ const defaultTheme = createTheme({
     // background: {
     //   default: backgroundColor
     // },
+    third: {
+      main: thirdColor,
+    },
     icons: {
       main: iconColor
     }

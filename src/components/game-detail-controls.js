@@ -6,9 +6,9 @@ export default function GameDetailControls() {
 
   return (
     <div className={classes.root}>
-      <Button variant="contained" size="small" color="primary">Mark As Played</Button>
-      <Button variant="contained" size="small" color="primary">Mark As Owned</Button>
-      <Button variant="contained" size="small" color="primary">Add To Wishlist</Button>
+      <Button variant="contained" size="small" color="icons">Mark As Played</Button>
+      <Button variant="contained" size="small" color="icons">Mark As Owned</Button>
+      <Button variant="contained" size="small" color="icons">Add To Wishlist</Button>
     </div>
   );
 }
@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     '& Button': {
       marginBottom: theme.spacing(1),
-      textTransform: 'none'
+      textTransform: 'none',
+      color: 'white'
     }
   }
 }));
