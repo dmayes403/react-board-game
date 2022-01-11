@@ -19,6 +19,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import { Outlet, useNavigate } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import defaultTheme from '../theme/custom-theme';
+import { makeStyles } from '@mui/styles';
 
 const drawerWidth = 240;
 
@@ -99,6 +100,7 @@ export default function MiniDrawer() {
   const [open, setOpen] = React.useState(false);
   let navigate = useNavigate();
   const theme = useTheme();
+  const classes = useStyles();
   console.log(theme);
 
   const menuItems = [
@@ -137,7 +139,7 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" className={classes.navTitle}>
             Board Game App
           </Typography>
         </Toolbar>
@@ -168,3 +170,9 @@ export default function MiniDrawer() {
     </Box>
   );
 }
+
+const useStyles = makeStyles(theme => ({
+  navTitle: {
+    color: theme.palette.icons.main
+  }
+}))

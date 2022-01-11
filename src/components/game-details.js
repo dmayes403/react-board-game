@@ -5,12 +5,14 @@ import { makeStyles } from '@mui/styles';
 import UserRating from "./user-rating";
 import * as _ from 'lodash';
 import Divider from '@mui/material/Divider';
+import GameDetailControls from "./game-detail-controls";
 
 export default function GameDetails() {
   const classes = useStyles();
   const { gameId } = useParams();
   const [game, setGame] = useState();
   const [allMechanics, setAllMechanics] = useState({});
+  const [allCategories, setAllCategories] = useState({});
   const [similarGames, setSimilarGames] = useState([]);
   console.log('gameId', gameId);
 
@@ -28,6 +30,13 @@ export default function GameDetails() {
     });
   }, []);
 
+  useEffect(() => {
+    axios.get(`https://api.boardgameatlas.com/api/game/categories?&client_id=${process.env.REACT_APP_BOARD_GAME_VAL}`).then((response) => {
+      console.log('categories', response);
+      setAllCategories(_.mapKeys(response.data.categories, 'id'));
+    });
+  }, []);
+
   // Update to use all mechanic ids instead just the 1st one
   useEffect(() => {
     if (game) {
@@ -41,24 +50,17 @@ export default function GameDetails() {
   return (
     <>
       <div className={classes.mainDetails}>
-        <img src={game?.images.medium}/>
+        <img src={game?.images.large}/>
 
         <div className={classes.sideInfo}>
           <div className={classes.title}>{game?.name}</div>
           <UserRating userRating={game?.average_user_rating} ratingCount={game?.num_user_ratings} />
 
-          <div className={classes.rowData} style={{marginTop: '32px'}}>
-            <div className={classes.subTitle}>Game Designer</div>
-            <div>{game?.primary_designer.name}</div>
-          </div>
-
-          <div className={classes.rowData}>
-            <div className={classes.subTitle}>Artists</div>
-            <div style={{display: 'flex'}}>
-              {game?.artists.map((artist, index) => (
-                <div key={artist} style={{marginRight: '8px'}}>{artist}{game.artists.length > 1 && index !== game.artists.length -1 ? ', ' : ''}</div>
-              ))}
-            </div>
+          <div className={classes.rowData} style={{marginTop: '16px', flexDirection: 'column'}}>
+            <div className={classes.subTitle}>Category</div>
+            <div>{game?.categories?.map(category => (
+              <div key={category.id}>{allCategories[category.id]?.name}</div>
+            ))}</div>
           </div>
 
           <div className={classes.rowData} style={{marginTop: '16px', flexDirection: 'column'}}>
@@ -88,8 +90,24 @@ export default function GameDetails() {
               <div className={classes.subTitle}>Min Play Time</div>
               <div>{game?.min_playtime} minutes</div>
             </div>
+
+            <div className={classes.rowData} style={{marginTop: '16px'}}>
+              <div className={classes.subTitle}>Game Designer</div>
+              <div>{game?.primary_designer.name}</div>
+            </div>
+
+            <div className={classes.artistContainer}>
+              <div className={classes.subTitle}>Artists</div>
+              <div style={{display: 'inherit', flexWrap: 'wrap'}}>
+                {game?.artists.map((artist, index) => (
+                  <div key={artist} className={classes.artist}>{artist}{game.artists.length > 1 && index !== game.artists.length -1 ? ', ' : ''}</div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
+
+        <GameDetailControls />
       </div>
 
       <Divider variant="middle" />
@@ -107,6 +125,14 @@ export default function GameDetails() {
 const useStyles = makeStyles(theme => ({
   mainDetails: {
     display: 'flex',
+    '& > img': {
+      width: '30%',
+      height: 'auto',
+      objectFit: 'contain'
+      // height: '400px'
+    },
+    justifyContent: 'center',
+    marginBottom: theme.spacing(2)
   },
   sideInfo: {
     display: 'flex',
@@ -134,5 +160,15 @@ const useStyles = makeStyles(theme => ({
   },
   lowerDetails: {
     padding: theme.spacing(2)
-  }
+  },
+  artistContainer: {
+    display: 'flex',
+    maxWidth: '300px',
+    // overflow: 'hidden'
+    fontSize: '.75em',
+  },
+  artist: {
+    whiteSpace: 'nowrap',
+    marginRight: theme.spacing(.5)
+  },
 }));

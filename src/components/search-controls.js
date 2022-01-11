@@ -49,7 +49,7 @@ export default function SearchControls({
           size="small"
       />
 
-      <FormControl className={classes.playerInput}>
+      <FormControl className={classes.playerInput} sx={{marginLeft: '8px'}}>
         <InputLabel>Min Players</InputLabel>
         <Select 
           id="min-players" 
@@ -62,7 +62,7 @@ export default function SearchControls({
         </Select>
       </FormControl>
 
-      <FormControl className={classes.playerInput}>
+      <FormControl className={classes.playerInput} sx={{marginLeft: '8px'}}>
         <InputLabel htmlFor="max-players">Max Players</InputLabel>
         <Select 
           id="max-players" 
@@ -78,16 +78,15 @@ export default function SearchControls({
   )
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    flexDirection: 'row'
   },
   playerInput: {
-    marginLeft: '8px',
+    marginLeft: theme.spacing(1),
     width: '100px',
     '& .MuiOutlinedInput-root': {
       maxHeight: '40px'
     }
   }
-});
+}));

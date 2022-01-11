@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material';
 
 const primaryColor = '#116466';
-const secondaryColor = '#D1E8E2';
+const secondaryColor = '#184746';
 const backgroundColor = '#2C3531';
 const iconColor = '#D9B08C';
 const iconColor2 = '#FFCB9A';
