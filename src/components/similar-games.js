@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(1),
       display: 'flex',
       flexDirection: 'column',
+      justifyContent: 'space-between',
       '& img': {
         objectFit: 'contain',
       }

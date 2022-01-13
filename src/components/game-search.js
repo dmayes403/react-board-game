@@ -3,6 +3,7 @@ import axios from "axios";
 import { makeStyles } from '@mui/styles';
 import SearchControls from './search-controls';
 import SearchedGameList from './searched-game-list';
+import GamesByCatAuto from './games-by-cat-auto';
 
 export default function GameSearch() {
   const classes = useStyles();
@@ -20,12 +21,6 @@ export default function GameSearch() {
     }
   }, [searchObj]);
 
-  // useEffect(() => {
-  //   axios.get(`https://api.boardgameatlas.com/api/game/categories?client_id=${process.env.REACT_APP_BOARD_GAME_VAL}`).then((response) => {
-  //     console.log(response.data);
-  //   });
-  // }, []);
-
   return (
     <div className="root">
       <SearchControls 
@@ -34,6 +29,8 @@ export default function GameSearch() {
       />
 
       <SearchedGameList games={gameSearchResults}/>
+
+      <GamesByCatAuto />
     </div>
   )
 }
