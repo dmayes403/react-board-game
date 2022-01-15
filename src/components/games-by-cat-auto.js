@@ -75,7 +75,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row'
   },
   game: {
-    width: '60px',
+    width: '120px',
     fontSize: '.5em',
     padding: theme.spacing(1),
     display: 'flex',
