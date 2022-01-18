@@ -50,17 +50,17 @@ export default function GamesByCatAuto() {
   return (
     <div>
       {Object.keys(gamesByCategory).map((catId, index) => (
-        <>
+        <div key={catId}>
           {index > 0 && <Divider />}
-          <div key={catId} className={classes.categoryRow}>
+          <div className={classes.categoryRow}>
             {gamesByCategory[catId].games.map(game => (
-              <div key={game.id} className={classes.game}>
+              <div key={catId + game.id} className={classes.game}>
                 <img src={game.images.small} />
                 <div>{game.name}</div>
               </div>
             ))}
           </div>
-        </>
+        </div>
       ))}
     </div>
   )
