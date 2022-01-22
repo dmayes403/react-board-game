@@ -40,9 +40,6 @@ export default function GamesByCatAuto() {
         }
 
         setGamesByCategory(gamesByCatMap);
-
-        console.log('test', gamesByCatMap);
-        console.log('test1', Object.keys(gamesByCatMap));
       }));
     });
   }, []);
