@@ -42,6 +42,7 @@ export default function GamesByCatAuto() {
         setGamesByCategory(gamesByCatMap);
       }));
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -52,7 +53,7 @@ export default function GamesByCatAuto() {
           <div className={classes.categoryRow}>
             {gamesByCategory[catId].games.map(game => (
               <div key={catId + game.id} className={classes.game}>
-                <img src={game.images.small} />
+                <img src={game.images.small} alt="game thumbnail"/>
                 <div>{game.name}</div>
               </div>
             ))}

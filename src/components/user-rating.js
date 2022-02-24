@@ -2,7 +2,6 @@ import StarOutlineIcon from '@mui/icons-material/StarOutline'
 import StarHalfIcon from '@mui/icons-material/StarHalf'
 import StarIcon from '@mui/icons-material/Star'
 import { makeStyles } from '@mui/styles'
-import Rating from '@mui/material/Rating';
 import { useState } from 'react';
 
 const Star = ({version}) => {
@@ -38,7 +37,7 @@ const Star = ({version}) => {
 
 export default function UserRating({ userRating, ratingCount }) {
   const classes = useStyles();
-  const [newRating, setNewRating] = useState(userRating);
+  // const [newRating, setNewRating] = useState(userRating);
 
   const fullStars = [];
   const halfStars = [];

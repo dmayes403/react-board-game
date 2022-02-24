@@ -13,17 +13,17 @@ const Item = ({game}) => {
   return (
     <Grid item>
         <Card variant="outlined" className={classes.cardContainer} onClick={() => navigate(`/game-details/${game.id}`)}>
-          <img className={classes.images} src={game.thumb_url} />
+          <img className={classes.images} src={game.thumb_url} alt="game thumnail"/>
 
           <div className={classes.details}>
             <Typography variant="subtitle2">{game.name}</Typography>
 
             <div>
-              {game.description_preview.length > 80 && displayMoreId != game.id ? game.description_preview.slice(0, 80) + '... ' : game.description_preview}
-              {game?.description_preview.length > 80 && displayMoreId != game.id && (
+              {game.description_preview.length > 80 && displayMoreId !== game.id ? game.description_preview.slice(0, 80) + '... ' : game.description_preview}
+              {game?.description_preview.length > 80 && displayMoreId !== game.id && (
                 <div className={classes.displayMore} onClick={e => setDisplayMoreId(game.id)}>Read more</div>
               )}
-              {displayMoreId == game.id && (
+              {displayMoreId === game.id && (
                 <div className={classes.displayMore} onClick={e => setDisplayMoreId(null)}>Read less</div>
               )}
             </div>

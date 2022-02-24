@@ -51,7 +51,7 @@ export default function GameDetails() {
   return (
     <div style={{width: '100%'}}>
       <div className={classes.mainDetails}>
-        <img src={game?.images.large}/>
+        <img src={game?.images.large} alt="game thumbnail"/>
 
         <div className={classes.sideInfo}>
           <div className={classes.title}>{game?.name}</div>

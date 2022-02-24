@@ -34,12 +34,12 @@ export default function SearchControls({
         searchText
       }
     })
-  }, [minPlayers, maxPlayers, searchText]);
+  }, [minPlayers, maxPlayers, searchText]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const playerOptns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
-    <div className="root">
+    <div className={classes.root}>
       <TextField
           sx={{ width: '50%' }}
           onChange={debouncedChangeHandler}
@@ -80,7 +80,7 @@ export default function SearchControls({
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
+    marginBottom: theme.spacing(2)
   },
   playerInput: {
     marginLeft: theme.spacing(1),

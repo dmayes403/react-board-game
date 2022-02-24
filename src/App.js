@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Shell from './components/shell'
 import defaultTheme from './theme/custom-theme';

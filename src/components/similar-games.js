@@ -9,7 +9,7 @@ export default function SimilarGames({games}) {
       {games.map(game => (
         <div key={game.id} style={{display: 'flex'}}>
           <div className={classes.game}>
-            <img src={game.images.small} />
+            <img src={game.images.small} alt="game thumbnail"/>
             <div>{game.name}</div>
           </div>
           <Divider orientation="vertical" sx={{margin: '8px 0px'}}/>
