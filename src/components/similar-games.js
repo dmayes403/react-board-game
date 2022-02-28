@@ -12,7 +12,7 @@ export default function SimilarGames({games}) {
             <img src={game.images.small} alt="game thumbnail"/>
             <div>{game.name}</div>
           </div>
-          <Divider orientation="vertical" sx={{margin: '8px 0px'}}/>
+          <Divider orientation="vertical" sx={{height: '80%', margin: 'auto'}}/>
         </div>
       ))}
     </div>
@@ -32,11 +32,17 @@ const useStyles = makeStyles((theme) => ({
       width: '60px',
       fontSize: '.5em',
       padding: theme.spacing(1),
+      margin: '0px 12px',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
       '& img': {
         objectFit: 'contain',
+      },
+      '&:hover': {
+        cursor: 'pointer',
+        transform: 'scale(1.2)',
+        transitionDuration: '.5s'
       }
     }
 }))

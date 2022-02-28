@@ -47,8 +47,9 @@ export default function GamesByCatAuto() {
   return (
     <div>
       {Object.keys(gamesByCategory).map((catId, index) => (
-        <div key={catId}>
-          {index > 0 && <Divider />}
+        <div key={catId} className={classes.catSection}>
+          <div>{gamesByCategory[catId].name}</div>
+          <Divider sx={{marginBottom: '8px'}}/>
           <div className={classes.categoryRow}>
             {gamesByCategory[catId].games.map(game => (
               <div key={catId + game.id} className={classes.game}>
@@ -65,7 +66,9 @@ export default function GamesByCatAuto() {
 
 const useStyles = makeStyles(theme => ({
   categoryRow: {
-    display: 'flex'
+    display: 'flex',
+    textAlign: 'center',
+    overflow: 'scroll'
   },
   columnData: {
     display: 'flex',
@@ -75,11 +78,21 @@ const useStyles = makeStyles(theme => ({
     width: '120px',
     fontSize: '.5em',
     padding: theme.spacing(1),
+    margin: '0px 12px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     '& img': {
       objectFit: 'contain',
+    },
+    '&:hover': {
+      transform: 'scale(1.2)',
+      transitionDuration: '.5s'
     }
+  },
+  catSection: {
+    textAlign: 'left',
+    marginTop: theme.spacing(4),
+    overflow: 'hidden'
   }
 }));

@@ -30,7 +30,7 @@ export default function GameSearch() {
 
       <SearchedGameList games={gameSearchResults}/>
 
-      <GamesByCatAuto />
+      {!searchObj?.searchText && (<GamesByCatAuto />)}
     </div>
   )
 }
