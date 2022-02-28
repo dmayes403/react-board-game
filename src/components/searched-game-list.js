@@ -13,7 +13,6 @@ const Item = ({game}) => {
 
   return (
     <Grid item>
-        {/* <Card className={classes.cardContainer} onClick={() => navigate(`/game-details/${game.id}`)}> */}
         <Card className={clsx({[classes.defaultHeight]: displayMoreId !== game.id, [classes.extendedHeight]: displayMoreId === game.id, [classes.cardContainer]: true})} onClick={() => navigate(`/game-details/${game.id}`)}>
           <img className={classes.images} src={game.thumb_url} alt="game thumnail"/>
 
