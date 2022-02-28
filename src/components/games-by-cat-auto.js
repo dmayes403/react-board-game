@@ -16,7 +16,6 @@ export default function GamesByCatAuto() {
     axios.get(`https://api.boardgameatlas.com/api/game/categories?client_id=${process.env.REACT_APP_BOARD_GAME_VAL}`).then((response) => {
       const defaultCats = response.data.categories.filter(cat => defaultCatNames.includes(cat.name));
       let gamesByCatMap = {};
-      console.log('defaultCats', defaultCats);
 
       defaultCats.forEach(cat => {
         gamesByCatMap[cat.id] = {
@@ -31,7 +30,7 @@ export default function GamesByCatAuto() {
         .map(id => axios.get(generateCatUrl(id)))
 
       axios.all(catRequests).then(axios.spread((...responses) => {
-        for(const key in gamesByCategory) {
+        for(const key in gamesByCatMap) {
           responses.forEach(response => {
             if (response.config.url.includes(key)) {
               gamesByCatMap[key].games = response.data.games;

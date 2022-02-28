@@ -4,15 +4,17 @@ import { makeStyles } from '@mui/styles';
 import { Typography } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import clsx from 'clsx';
 
 const Item = ({game}) => {
   const classes = useStyles();
   const [displayMoreId, setDisplayMoreId] = useState();
   let navigate = useNavigate();
-  
+
   return (
     <Grid item>
-        <Card variant="outlined" className={classes.cardContainer} onClick={() => navigate(`/game-details/${game.id}`)}>
+        {/* <Card className={classes.cardContainer} onClick={() => navigate(`/game-details/${game.id}`)}> */}
+        <Card className={clsx({[classes.defaultHeight]: displayMoreId !== game.id, [classes.extendedHeight]: displayMoreId === game.id, [classes.cardContainer]: true})} onClick={() => navigate(`/game-details/${game.id}`)}>
           <img className={classes.images} src={game.thumb_url} alt="game thumnail"/>
 
           <div className={classes.details}>
@@ -21,10 +23,10 @@ const Item = ({game}) => {
             <div>
               {game.description_preview.length > 80 && displayMoreId !== game.id ? game.description_preview.slice(0, 80) + '... ' : game.description_preview}
               {game?.description_preview.length > 80 && displayMoreId !== game.id && (
-                <div className={classes.displayMore} onClick={e => setDisplayMoreId(game.id)}>Read more</div>
+                <div className={classes.displayMore} onClick={e => {e.stopPropagation(); setDisplayMoreId(game.id)}}>Read more</div>
               )}
               {displayMoreId === game.id && (
-                <div className={classes.displayMore} onClick={e => setDisplayMoreId(null)}>Read less</div>
+                <div className={classes.displayMore} onClick={e => {e.stopPropagation(); setDisplayMoreId(null)}}>Read less</div>
               )}
             </div>
           </div>
@@ -66,6 +68,12 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       cursor: 'pointer'
     }
+  },
+  defaultHeight: {
+    height: '325px'
+  },
+  extendedHeight: {
+    height: 'flex'
   },
   details: {
     maxWidth: '200px',
