@@ -4,10 +4,9 @@ import defaultTheme from './theme/custom-theme';
 import { ThemeProvider } from '@mui/material';
 
 function App() {
-  console.log('defaultTheme', defaultTheme);
   return (
     <ThemeProvider theme={defaultTheme}>
-      <div className="App">
+      <div className="App" style={{height: '100%'}}>
           <Shell />
       </div>
     </ThemeProvider>

@@ -49,7 +49,7 @@ export default function GameDetails() {
   }, [game])
 
   return (
-    <div style={{width: '100%'}}>
+    <div className={classes.root} style={{width: '100%'}}>
       <div className={classes.mainDetails}>
         <img src={game?.images.large} alt="game thumbnail"/>
 
@@ -122,12 +122,19 @@ export default function GameDetails() {
 
       <Divider />
 
+      <div className={classes.spacer}></div>
+
       <SimilarGames games={similarGames}/>
     </div>
   )
 }
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: 'calc(100% - 64px)'
+  },
   mainDetails: {
     display: 'flex',
     '& > img': {
@@ -176,4 +183,7 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: 'nowrap',
     marginRight: theme.spacing(.5)
   },
-}));
+  spacer: {
+    flexGrow: 1
+  }
+}), {name: 'GameDetails'});

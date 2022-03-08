@@ -101,7 +101,6 @@ export default function MiniDrawer() {
   let navigate = useNavigate();
   const theme = useTheme();
   const classes = useStyles();
-  console.log(theme);
 
   const menuItems = [
     {
@@ -123,7 +122,7 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', height: '100%' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} color="primary">
         <Toolbar>
