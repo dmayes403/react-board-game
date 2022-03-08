@@ -150,7 +150,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     padding: theme.spacing(2),
-    textAlign: 'left'
+    textAlign: 'left',
+    marginRight: theme.spacing(10)
   },
   title: {
     fontSize: '1.2em',
@@ -176,7 +177,6 @@ const useStyles = makeStyles(theme => ({
   artistContainer: {
     display: 'flex',
     maxWidth: '300px',
-    // overflow: 'hidden'
     fontSize: '.75em',
   },
   artist: {

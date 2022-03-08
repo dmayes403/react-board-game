@@ -5,6 +5,9 @@ import { Typography } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import clsx from 'clsx';
+import IconButton from '@mui/material/IconButton';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const Item = ({game}) => {
   const classes = useStyles();
@@ -27,6 +30,17 @@ const Item = ({game}) => {
               {displayMoreId === game.id && (
                 <div className={classes.displayMore} onClick={e => {e.stopPropagation(); setDisplayMoreId(null)}}>Read less</div>
               )}
+            </div>
+
+            <div className={classes.spacer}></div>
+
+            <div className={classes.actionIcons}>
+              <IconButton onClick={e => {e.stopPropagation()}}>
+                <CheckCircleIcon />
+              </IconButton>
+              <IconButton onClick={e => {e.stopPropagation()}}>
+                <AutoAwesomeIcon />
+              </IconButton>
             </div>
           </div>
         </Card>
@@ -60,28 +74,38 @@ const useStyles = makeStyles(theme => ({
     width: '200px',
   },
   mainGrid: {
-    marginTop: theme.spacing(3)
+    marginTop: theme.spacing(3),
   },
   cardContainer: {
     padding: theme.spacing(1),
     '&:hover': {
       cursor: 'pointer'
-    }
+    },
   },
   defaultHeight: {
-    height: '325px'
+    height: '350px'
   },
   extendedHeight: {
     height: 'flex'
   },
   details: {
     maxWidth: '200px',
-    fontSize: '.6em'
+    fontSize: '.6em',
+    display: 'flex',
+    flexDirection: 'column',
+    height: '38%'
   },
   displayMore: {
     color: 'blue',
     '&:hover': {
       cursor: 'pointer'
     }
+  },
+  spacer: {
+    flexGrow: 1
+  },
+  actionIcons: {
+    display: 'flex',
+    justifyContent: 'space-around'
   }
-}));
+}), {name: 'SearchedGameList'});
