@@ -38,6 +38,8 @@ export default function SearchControls({
 
   const playerOptns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+  fetch('/api/games/owned').then(res => console.log(res));
+
   return (
     <div className={classes.root}>
       <TextField
